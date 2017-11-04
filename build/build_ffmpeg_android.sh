@@ -6,7 +6,7 @@
 
 #参考 https://developer.android.google.cn/ndk/guides/standalone_toolchain.html
 
-ANDROID_NDK_HOME=/home/mylhyz/Android/Sdk/ndk-bundle
+ANDROID_NDK_HOME=$HOME/Android/Sdk/ndk-bundle
 #NDK环境变量
 NDK=$ANDROID_NDK_HOME
 #生成文件安装路径
