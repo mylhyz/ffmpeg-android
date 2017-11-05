@@ -1,11 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_show_ffmpeg_info"
+    <com.google.android.flexbox.FlexboxLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:alignContent="stretch"
+        app:alignItems="stretch"
+        app:flexWrap="wrap">
 
-</ScrollView>
+        <com.viper.android.widget.ViperButton
+            android:id="@+id/supported_protocol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Protocol"
+            tools:ignore="HardcodedText" />
+
+        <com.viper.android.widget.ViperButton
+            android:id="@+id/supported_format"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Format"
+            tools:ignore="HardcodedText" />
+
+        <com.viper.android.widget.ViperButton
+            android:id="@+id/supported_codec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Codec"
+            tools:ignore="HardcodedText" />
+
+        <com.viper.android.widget.ViperButton
+            android:id="@+id/supported_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Filter"
+            tools:ignore="HardcodedText" />
+
+        <com.viper.android.widget.ViperButton
+            android:id="@+id/show_configure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Configure"
+            tools:ignore="HardcodedText" />
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:padding="8dp"
+            android:id="@+id/tv_show_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            tools:text="World"/>
+
+    </ScrollView>
+</LinearLayout>

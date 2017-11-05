@@ -2,6 +2,7 @@ package com.viper.android.ffmpeg;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.TextView;
 
 /**
@@ -11,25 +12,68 @@ import android.widget.TextView;
  */
 
 public class FFmpegInfoActivity extends BaseActivity {
+    private TextView tvShomInfo;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_ffmpeg_info);
 
-        TextView tv = findViewById(R.id.tv_show_ffmpeg_info);
-        String info = getConfigureInfo();
-        if (info != null) {
-            String[] items = info.split(" ");
-            StringBuilder builder = new StringBuilder();
-            for (String item : items) {
-                builder.append(item).append("\n\n");
+        tvShomInfo = findViewById(R.id.tv_show_info);
+
+        findViewById(R.id.supported_protocol).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showInfo(getSupportedProtocol());
             }
-            tv.setText(builder.toString());
-        }
+        });
+
+        findViewById(R.id.supported_format).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showInfo(getSupportedFormat());
+            }
+        });
+
+        findViewById(R.id.supported_codec).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showInfo(getSupportedCodec());
+            }
+        });
+
+        findViewById(R.id.supported_filter).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showInfo(getSupportedFilter());
+            }
+        });
+
+        findViewById(R.id.show_configure).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                StringBuilder builder = new StringBuilder();
+                for (String item : getConfigureInfo().split(" ")) {
+                    builder.append(item).append('\n');
+                }
+                showInfo(builder.toString());
+            }
+        });
     }
 
     public static native String getConfigureInfo();
+
+    public static native String getSupportedProtocol();
+
+    public static native String getSupportedFormat();
+
+    public static native String getSupportedCodec();
+
+    public static native String getSupportedFilter();
+
+    private void showInfo(String info) {
+        tvShomInfo.setText(info);
+    }
 
     @Override
     protected boolean isShowBackHome() {

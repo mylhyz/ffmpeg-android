@@ -7,7 +7,7 @@
     android:padding="8dp"
     tools:context="com.viper.android.ffmpeg.MainActivity">
 
-    <Button
+    <com.viper.android.widget.ViperButton
         android:id="@+id/btn_show_ffmpeg_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
