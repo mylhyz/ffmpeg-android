@@ -1,11 +1,15 @@
 #include <jni.h>
 #include <string>
 
+extern "C" {
+#include "libavcodec/avcodec.h"
+}
+
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_viper_android_ffmpeg_MainActivity_stringFromJNI(
-        JNIEnv* env,
-        jobject /* this */) {
-    std::string hello = "Hello from C++";
-    return env->NewStringUTF(hello.c_str());
+Java_com_viper_android_ffmpeg_FFmpegInfoActivity_getConfigureInfo(
+        JNIEnv *env, jclass type) {
+    char info[1000] = {0};
+    sprintf(info, "%s", avcodec_configuration());
+    return env->NewStringUTF(info);
 }
